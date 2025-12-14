@@ -1,18 +1,16 @@
 import streamlit as st
+st.write("✅ app.py started")
 import joblib
 import pandas as pd
 import numpy as np
 import os
-import io
-import requests
 import certifi
 import plotly.express as px
 import plotly.graph_objects as go
-import tensorflow
 from plotly.subplots import make_subplots
-from tensorflow import keras
 from datetime import timedelta
 from dotenv import load_dotenv
+USE_LOCAL_STORAGE = os.getenv("USE_LOCAL_STORAGE", "0") == "1"
 
 HOPSWORKS_AVAILABLE = False
 hopsworks = None
@@ -24,51 +22,6 @@ except ImportError:
     pass
 except Exception:
     pass
-
-MODEL_URL = "https://drive.google.com/uc?export=download&id=18VUpm_lN3TgcG8DNz2w71n2lN3ZhCzGU"
-MODEL_PATH = "aqi_best_model.h5"
-SCALER_PATH = "scaler.pkl"
-# ----------------- Download Function (Efficient, chunked) -----------------
-def download_large_file(url, destination):
-    """Downloads large file in chunks to conserve memory."""
-    if os.path.exists(destination):
-        st.info(f"✅ Model {destination} already downloaded. Loading...")
-        return
-        
-    st.info(f"⬇️ Downloading 8GB model (This may take 1-2 minutes)...")
-    try:
-        # Use stream=True to download in chunks
-        with requests.get(url, stream=True) as r:
-            r.raise_for_status() # Raise error for bad status codes
-            with open(destination, 'wb') as f:
-                # Iterate in chunks to prevent memory overload
-                for chunk in r.iter_content(chunk_size=8192):
-                    if chunk: # filter out keep-alive new chunks
-                        f.write(chunk)
-            st.success("✅ Model download complete.")
-    except Exception as e:
-        st.error(f"❌ Critical Download Failure: {e}")
-        st.stop()
-# --------------------------------------------------------------------------
-
-# 1. Download the large model
-download_large_file(MODEL_URL, MODEL_PATH)
-
-# 2. Load the models
-try:
-    # Since it's an .h5 file, use keras.models.load_model
-    model = keras.models.load_model(MODEL_PATH)
-    
-    # Load the scaler (which is small, so it was committed to GitHub)
-    scaler = joblib.load(SCALER_PATH) 
-    
-except Exception as e:
-    st.error(f"❌ Error loading model/scaler files: {e}")
-    st.stop()
-
-# =========================================================================
-# END OF LARGE MODEL DOWNLOAD SECTION
-# =========================================================================
 
 # Model Explainability
 EXPLAINABILITY_AVAILABLE = False
@@ -1058,7 +1011,6 @@ def detect_drift(training_data, current_data, feature='pm2_5', threshold=0.2):
 # -------------------------------------------------
 
 # Check if using local storage
-USE_LOCAL_STORAGE = os.getenv("USE_LOCAL_STORAGE", "0") == "1"
 
 if USE_LOCAL_STORAGE:
     project = None  # No project needed for local storage
