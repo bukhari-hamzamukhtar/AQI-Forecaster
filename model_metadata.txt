@@ -1,0 +1,13 @@
+<<<<<<< HEAD
+Model: SARIMA
+Description: Winner: SARIMA | RMSE: 24.0663, MAE: 18.1317, R²: -0.5312 | Best Params: (2, 0, 1, 0, 1, 1, 24)
+RMSE: 24.0663
+MAE: 18.1317
+R²: -0.5312
+=======
+Model: SARIMA
+Description: Winner: SARIMA | RMSE: 24.0663, MAE: 18.1317, R²: -0.5312 | Best Params: (2, 0, 1, 0, 1, 1, 24)
+RMSE: 24.0663
+MAE: 18.1317
+R²: -0.5312
+>>>>>>> cb36fc1be1ea45e7e38cf16bbec840c448e7add6

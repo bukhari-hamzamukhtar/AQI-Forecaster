@@ -1,0 +1,23 @@
+# Core App Dependencies
+streamlit
+pandas
+numpy
+plotly
+scikit-learn
+joblib
+
+# Explainability Libraries
+shap
+lime
+
+# Time-Series Models
+statsmodels
+# tensorflow # Keep this commented out unless your model is a Keras/TF model
+# xgboost # Keep this commented out unless your model is an actual XGBoost model
+
+# Data Utils
+python-dotenv
+certifi
+pyarrow
+requests
+fastparquet
