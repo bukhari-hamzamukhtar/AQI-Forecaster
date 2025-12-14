@@ -1,16 +1,9 @@
-# .streamlit/config.toml
-
-# --- Add this section to fix the watch limit error ---
 [server]
-# Tell the file watcher to ignore large, static, or temporary folders
-folderWatchBlacklist = ["data", "local_data", "venv", ".git", ".idea", ".mypy_cache"]
+address = "0.0.0.0"
+port = 5000
+headless = true
+enableCORS = false
+enableXsrfProtection = false
 
-# Ensure you are still forcing Python 3.9 as planned
-[general]
-python_version = 3.9
-
-[api_config]
-open_meteo_base = "https://air-quality-api.open-meteo.com/v1/air-quality"
-lat = 33.6844
-lon = 73.0479
-use_local_storage = true
+[browser]
+gatherUsageStats = false
