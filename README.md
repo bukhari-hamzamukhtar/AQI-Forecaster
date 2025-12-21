@@ -119,6 +119,28 @@ If you want to edit the code or run without Docker.
 * [cite_start]**MLOps:** Docker, GitHub Actions, Hugging Face Hub (Model Registry) [cite: 8]
 * [cite_start]**App Interface:** Streamlit [cite: 81]
 
+## 📝 Cite This Project
+If you use this project in your research, please cite:
+```bibtex
+@software{aqi_forecaster_2025,
+  author = {Bukhari, Hamza Mukhtar},
+  title = {End-to-End Serverless MLOps System for AQI Prediction},
+  year = {2025},
+  url = {[https://github.com/bukhari-hamzamukhtar/AQI-Forecaster](https://github.com/bukhari-hamzamukhtar/AQI-Forecaster)}
+}
+
+## 📚 References
+1. **WHO**, "WHO global air quality guidelines: particulate matter (PM2.5 and PM10), ozone, nitrogen dioxide, sulfur dioxide and carbon monoxide," WHO, Geneva, 2021.
+2. **L. Breiman**, "Random forests," Machine Learning, vol. 45, no. 1, pp. 5-32, 2001.
+3. **T. Chen and C. Guestrin**, "XGBoost: A scalable tree boosting system," KDD '16, pp. 785-794, 2016.
+4. **S. M. Lundberg and S.-L. Lee**, "A unified approach to interpreting model predictions," NIPS, vol. 30, 2017.
+5. **M. T. Ribeiro, S. Singh, and C. Guestrin**, "Why should I trust you?: Explaining the predictions of any classifier," KDD '16, pp. 1135-1144, 2016.
+6. **D. Sculley et al.**, "Hidden technical debt in machine learning systems," NIPS, vol. 28, 2015.
+7. **D. Merkel**, "Docker: lightweight Linux containers for consistent development and deployment," Linux Journal, 2014.
+8. **D. Kreuzberger et al.**, "Machine learning operations (MLOps): Overview, definition, and architecture," IEEE Access, vol. 11, 2023.
+9. **F. Pedregosa et al.**, "Scikit-learn: Machine learning in Python," JMLR, vol. 12, 2011.
+10. **U.S. EPA**, "Technical Assistance Document for the Reporting of Daily Air Quality," EPA 454/B-18-007, 2018.
+
 ## 📜 License
 This project is licensed under the MIT License.
 
