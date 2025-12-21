@@ -4,7 +4,7 @@
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3110/)
 [![Docker](https://img.shields.io/badge/docker-automated-blue)](https://www.docker.com/)
 
-[cite_start]An end-to-end MLOps system that predicts the **Air Quality Index (AQI)** for the next 72 hours based on the past 7 days of pollutant data[cite: 10]. [cite_start]The system features an automated pipeline for data ingestion, feature engineering, model training, and drift monitoring[cite: 7].
+An end-to-end MLOps system that predicts the **Air Quality Index (AQI)** for the next 72 hours based on the past 7 days of pollutant data. The system features an automated pipeline for data ingestion, feature engineering, model training, and drift monitoring [8].
 
 **🚀 Live Demo:** [Click here to view the deployed App on Hugging Face](https://huggingface.co/spaces/bukhari-hamzamukhtar/aqi-forecaster)
 
@@ -23,28 +23,28 @@
 ---
 
 ## 🔭 Project Overview
-Air pollution is a silent killer. [cite_start]This project aims to provide accurate, short-term AQI forecasting to help citizens make informed health decisions[cite: 5]. 
+Air pollution is a silent killer [1]. This project aims to provide accurate, short-term AQI forecasting to help citizens make informed health decisions.
 
-[cite_start]The system fetches hourly pollutant data ($PM_{2.5}$, $PM_{10}$, $NO_2$, $SO_2$, $O_3$, $CO$) from the **Open-Meteo API**[cite: 27], processes it through a robust feature engineering pipeline, and generates forecasts using an ensemble of machine learning models. [cite_start]It was designed to handle **data drift** and operates in a serverless environment using Docker[cite: 8].
+The system fetches hourly pollutant data ($PM_{2.5}$, $PM_{10}$, $NO_2$, $SO_2$, $O_3$, $CO$) from the **Open-Meteo API**, processes it through a robust feature engineering pipeline, and generates forecasts using an ensemble of machine learning models. It was designed to handle **data drift** [6] and operates in a serverless environment using Docker [7].
 
 ## 🏗 System Architecture
 The pipeline consists of three main stages:
-1. [cite_start]**Data Pipeline:** Automated ingestion and Feature Store (Local Parquet fallback implemented after Hopsworks)[cite: 30, 78].
-2. [cite_start]**Training Pipeline:** Comparative evaluation of XGBoost, Random Forest, SVM, MLP, and SARIMA[cite: 7].
-3. [cite_start]**Inference & Monitoring:** Streamlit dashboard with SHAP explainability and KS-test drift detection[cite: 9, 20].
+1. **Data Pipeline:** Automated ingestion and Feature Store (Local Parquet fallback implemented after Hopsworks).
+2. **Training Pipeline:** Comparative evaluation of XGBoost [3], Random Forest [2], SVM, MLP, and SARIMA.
+3. **Inference & Monitoring:** Streamlit dashboard with SHAP explainability [4] and KS-test drift detection.
 
 ## ✨ Key Features
-* [cite_start]**Multi-Model Evaluation:** compares 5 different architectures (SARIMA proved best for local constraints)[cite: 132].
-* [cite_start]**Lazy Model Loading:** Fetches large model artifacts (~8GB) from Hugging Face Hub on runtime to keep Docker images light[cite: 8, 80].
-* [cite_start]**Explainable AI:** Integrated **SHAP** and **LIME** to explain *why* a specific AQI was predicted[cite: 9].
-* [cite_start]**Drift Detection:** Monitors production data distributions using the Kolmogorov-Smirnov test to flag when the model needs retraining[cite: 20].
-* [cite_start]**Reproducibility:** Fully containerized using Docker[cite: 8].
+* **Multi-Model Evaluation:** compares 5 different architectures (SARIMA proved best for local constraints).
+* **Lazy Model Loading:** Fetches large model artifacts (~8GB) from Hugging Face Hub on runtime to keep Docker images light.
+* **Explainable AI:** Integrated **SHAP** [4] and **LIME** [5] to explain *why* a specific AQI was predicted.
+* **Drift Detection:** Monitors production data distributions using the Kolmogorov-Smirnov test to flag when the model needs retraining.
+* **Reproducibility:** Fully containerized using Docker [7].
 
 ## 📊 Performance
-[cite_start]The system was evaluated in two phases: Cloud (Hopsworks) and Local (Resource-Constrained)[cite: 9].
-* [cite_start]**Best Model (Local):** SARIMA [cite: 132]
-* [cite_start]**RMSE:** ~24.07 [cite: 180]
-* [cite_start]**Accuracy:** >90% on test set validation[cite: 74].
+The system was evaluated in two phases: Cloud (Hopsworks) and Local (Resource-Constrained).
+* **Best Model (Local):** SARIMA
+* **RMSE:** ~24.07
+* **Accuracy:** >90% on test set validation.
 
 ---
 
@@ -57,7 +57,7 @@ Since this project deals with large model files and specific dependencies, the e
 * A **Hugging Face Token** (Read permission) to download the model. [Get one here](https://huggingface.co/settings/tokens).
 
 ### Method 1: Docker (Recommended)
-[cite_start]This ensures you run the exact same environment as the production deployment[cite: 104].
+This ensures you run the exact same environment as the production deployment.
 
 1.  **Clone the repository:**
     ```bash
@@ -97,7 +97,7 @@ If you want to edit the code or run without Docker.
     ```
 
 3.  **Set Environment Variables:**
-    [cite_start]You need to set the `HF_TOKEN` variable in your terminal so the app can download the model[cite: 112].
+    You need to set the `HF_TOKEN` variable in your terminal so the app can download the model.
     ```bash
     # Windows (PowerShell)
     $env:HF_TOKEN="your_token_here"
@@ -114,10 +114,17 @@ If you want to edit the code or run without Docker.
 ---
 
 ## 🛠 Tech Stack
-* [cite_start]**Core:** Python 3.11[cite: 107], Pandas, NumPy
-* [cite_start]**ML Frameworks:** Scikit-learn, TensorFlow/Keras, XGBoost, Statsmodels (SARIMA) [cite: 7]
-* [cite_start]**MLOps:** Docker, GitHub Actions, Hugging Face Hub (Model Registry) [cite: 8]
-* [cite_start]**App Interface:** Streamlit [cite: 81]
+* **Core:** Python 3.11, Pandas, NumPy
+* **ML Frameworks:** Scikit-learn [9], TensorFlow/Keras, XGBoost [3], Statsmodels (SARIMA)
+* **MLOps:** Docker [7], GitHub Actions, Hugging Face Hub (Model Registry)
+* **App Interface:** Streamlit
+
+## 📜 License
+This project is licensed under the MIT License.
+
+## 🤝 Acknowledgments
+* **Open-Meteo** for the excellent free Air Quality API.
+* **GIKI Faculty** for guidance on MLOps best practices.
 
 ## 📝 Cite This Project
 If you use this project in your research, please cite:
@@ -140,10 +147,3 @@ If you use this project in your research, please cite:
 8. **D. Kreuzberger et al.**, "Machine learning operations (MLOps): Overview, definition, and architecture," IEEE Access, vol. 11, 2023.
 9. **F. Pedregosa et al.**, "Scikit-learn: Machine learning in Python," JMLR, vol. 12, 2011.
 10. **U.S. EPA**, "Technical Assistance Document for the Reporting of Daily Air Quality," EPA 454/B-18-007, 2018.
-
-## 📜 License
-This project is licensed under the MIT License.
-
-## 🤝 Acknowledgments
-* [cite_start]**Open-Meteo** for the excellent free Air Quality API[cite: 7].
-* [cite_start]**GIKI Faculty** for guidance on MLOps best practices[cite: 269].
